@@ -35,7 +35,6 @@ export default {
     }
   },
   mounted () {
-    console.log('mounted')
     this._setSliderWidth()
     this._initDots()
     this._initSlider()
@@ -100,13 +99,11 @@ export default {
     }
   },
   activated () {
-    console.log('activated')
     if (this.autoPlay) {
       this._play()
     }
   },
   deactivated () {
-    console.log('deactivated')
     clearTimeout(this.timer)
   },
   beforeDestroy () {

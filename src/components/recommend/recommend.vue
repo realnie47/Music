@@ -51,7 +51,6 @@ export default {
   },
   // 实例创建后执行，此时没有 DOM 结构
   created () {
-    console.log('created')
     // 获取轮播图数据
     this._getRecommend()
     // 获取歌单数据
