@@ -26,6 +26,6 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // 不检测新文件末尾空行
-    'eol-last': 0,
+    'eol-last': 0
   }
 }
