@@ -29,9 +29,7 @@ export default {
     }
   },
   mounted () {
-    setTimeout(() => {
-        this._initScroll()
-    }, 20)
+    this._initScroll()
   },
   methods: {
     _initScroll () {
@@ -62,9 +60,9 @@ export default {
     scrollToElement () {
       this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
     },
-    refresh() {
-        this.scroll && this.scroll.refresh()
-    },
+    refresh () {
+      this.scroll && this.scroll.refresh()
+    }
   }
 }
 </script>

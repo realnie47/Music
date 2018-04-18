@@ -27,7 +27,7 @@
       </scroll>
     </div>
     <div class="search-result" v-show="query" ref="searchResult">
-      <suggest @select="saveSearchHistory(query)" :query="query"></suggest>
+      <suggest @select="saveSearch" :query="query"></suggest>
     </div>
     <confirm ref="confirm" text="是否清空所有搜索历史" confirmBtnText="清空" @confirm="clearSearchHistory"></confirm>
     <router-view></router-view>
@@ -39,18 +39,15 @@ import SearchBox from 'base/search-box/search-box'
 import {getHotKey} from 'api/search.js'
 import {ERR_OK} from 'api/config.js'
 import Suggest from 'components/suggest/suggest'
-import {playlistMixin} from 'common/js/mixin'
-import {mapActions, mapGetters} from 'vuex'
+import {playlistMixin, searchMixin} from 'common/js/mixin'
+import {mapActions} from 'vuex'
 import SearchList from 'base/search-list/search-list'
 import Confirm from 'base/confirm/confirm'
 import Scroll from 'base/scroll/scroll'
 
 export default {
-  mixins: [playlistMixin],
+  mixins: [playlistMixin, searchMixin],
   computed: {
-    ...mapGetters([
-      'searchHistory'
-    ]),
     shortcut () {
       return this.hotkey.concat(this.searchHistory)
     }
@@ -60,8 +57,7 @@ export default {
   },
   data () {
     return {
-      hotkey: [],
-      query: ''
+      hotkey: []
     }
   },
   methods: {
@@ -70,14 +66,8 @@ export default {
       this.$refs.searchResult.style.bottom = bottom
       this.$refs.shortcutWrapper.style.bottom = bottom
     },
-    onQueryChange (query) {
-      this.query = query
-    },
     showConfirm () {
       this.$refs.confirm.show()
-    },
-    addQuery (query) {
-      this.$refs.searchBox.setQuery(query)
     },
     _getHotKey () {
       getHotKey().then((res) => {
@@ -87,8 +77,6 @@ export default {
       })
     },
     ...mapActions([
-      'saveSearchHistory',
-      'deleteSearchHistory',
       'clearSearchHistory'
     ])
   },
