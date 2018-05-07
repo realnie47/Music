@@ -25,7 +25,7 @@ export function getVKey (songmid, filename) {
 }
 
 export function getLyric (mid) {
-  const url = debug ? '/api/lyric' : 'http://123.206.75.198/music/api/lyric'  
+  const url = 'http://123.206.75.198/music/api/lyric'
 
   const data = Object.assign({}, commonParams, {
     songmid: mid,

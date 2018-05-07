@@ -13,7 +13,7 @@ export function getRecommend () {
 }
 
 export function getDiscList () {
-  const url = debug ? '/api/getDiscList' : 'http://123.206.75.198/music/api/getDiscList'
+  const url = 'http://123.206.75.198/music/api/getDiscList'
 
   const data = Object.assign({}, commonParams, {
     platform: 'yqq',
@@ -34,7 +34,7 @@ export function getDiscList () {
 }
 
 export function getSongList (disstid) {
-  const url = debug ? '/api/getCdInfo' : 'http://123.206.75.198/music/api/getCdInfo'
+  const url = 'http://123.206.75.198/music/api/getCdInfo'
   const data = Object.assign({}, commonParams, {
     disstid,
     type: 1,
